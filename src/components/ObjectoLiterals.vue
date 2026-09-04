@@ -6,6 +6,9 @@
     import joyeria1 from '../assets/imagenes/joyeria1.png'
     import joyeria2 from '../assets/imagenes/joyeria2.png'
     import joyeria3 from '../assets/imagenes/joyeria3.png'
+    import outfit1 from '../assets/imagenes/outfit1.jpeg'
+    import outfit2 from '../assets/imagenes/outfit2.jpeg'
+    import outfit3 from '../assets/imagenes/outfit3.jpeg'
     const contenidoE={
         idSeccion: 'emprendimiento',
         nombreSeccion: 'Emprendimiento',
@@ -78,6 +81,43 @@ const contenidoJ={
 function obtenerPublicacionesJ() {
   return contenidoJ.publicaciones
 }
+
+const contenidoO={
+    idSeccion: 'outfits',
+    nombreSeccion: 'Outfits',
+    publicaciones:[
+        {
+            idPublicacion: 1,
+            usuario: 'outfitlover',
+            fecha: '2026-08-27',
+            titulo: 'Outfit casual para el día a día',
+            descripcion: 'Un look cómodo y estilizado para tus actividades diarias.',
+            imagen: outfit3,
+            
+        },
+        {
+            idPublicacion: 2,
+            usuario: 'fashionista',
+            fecha: '2026-06-15',
+            titulo: 'Estilo urbano y moderno',
+            descripcion: 'Combina prendas urbanas con accesorios modernos para un look único.',
+            imagen: outfit2,
+        },
+        {
+        
+            idPublicacion: 3,
+            usuario: 'streetstylequeen',
+            fecha: '2026-07-10',
+            titulo: 'Outfit para un día soleado',
+            descripcion: 'Perfecto para disfrutar del sol con estilo y comodidad.',
+            imagen: outfit1,
+        }
+    ]
+}
+
+function obtenerPublicacionesO() {
+  return contenidoO.publicaciones
+}
 </script>
 
 <template>
@@ -99,6 +139,18 @@ function obtenerPublicacionesJ() {
         <h2>{{ contenidoJ.nombreSeccion }}</h2>
         <div class="publicaciones">
             <div class="publicacion" v-for="pub in obtenerPublicacionesJ()" :key="pub.idPublicacion">
+                <h2>{{ pub.usuario }}</h2>
+                <small>{{ pub.fecha }}</small>
+                <h3>{{ pub.titulo }}</h3>
+                <img :src="pub.imagen" :alt="pub.titulo">
+                <p>{{ pub.descripcion }}</p>
+            </div>
+        </div>
+    </section>
+    <section id="outfits">
+        <h2>{{ contenidoO.nombreSeccion }}</h2>
+        <div class="publicaciones">
+            <div class="publicacion" v-for="pub in obtenerPublicacionesO()" :key="pub.idPublicacion">
                 <h2>{{ pub.usuario }}</h2>
                 <small>{{ pub.fecha }}</small>
                 <h3>{{ pub.titulo }}</h3>
