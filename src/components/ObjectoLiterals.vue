@@ -2,7 +2,10 @@
     import {ref} from 'vue'
     import emprendimiento1 from '../assets/imagenes/emprendimiento1.jpeg'
     import emprendimiento2 from '../assets/imagenes/emprendimiento2.jpeg'
+    import emprendimiento3 from '../assets/imagenes/emprendimiento3.jpeg'
     import joyeria1 from '../assets/imagenes/joyeria1.png'
+    import joyeria2 from '../assets/imagenes/joyeria2.png'
+    import joyeria3 from '../assets/imagenes/joyeria3.png'
     const contenidoE={
         idSeccion: 'emprendimiento',
         nombreSeccion: 'Emprendimiento',
@@ -19,10 +22,19 @@
             {
                 idPublicacion: 2,
                 usuario: 'glowyourbiz.mx',
-                fecha: '2026-02-01',
+                fecha: '2026-09-04',
                 titulo: '20 ganchos para vender más',
                 descripcion: '¡Ya está aqui tu masterclass de la semana! Si no creces y vendes con tu contenido es porque no estás utilizando estos pasos.',
                 imagen: emprendimiento2,
+            },
+            {
+            
+                idPublicacion: 3,
+                usuario: 'diariodeunacreadora',
+                fecha: '2026-03-23',
+                titulo: '¿No tienes ideas para tu contenido?',
+                descripcion: 'Si cada vez que entras a Tiktok piensas "¿y ahora qué publico?", este carrusel es para ti.',
+                imagen: emprendimiento3,
             }
         ]
     }
@@ -46,11 +58,19 @@ const contenidoJ={
         },
         {
             idPublicacion: 2,
-            usuario: 'glowyourbiz.mx',
+            usuario: 'hazy_joyeria',
             fecha: '2026-02-01',
-            titulo: '20 ganchos para vender más',
-            descripcion: '¡Ya está aqui tu masterclass de la semana! Si no creces y vendes con tu contenido es porque no estás utilizando estos pasos.',
-            imagen: 'https://via.placeholder.com/150',
+            titulo: 'Nuevos aretes ✨',
+            descripcion: '¡Llegaron nuevos aretes! Diseños minimalistas y elegantes para cualquier ocasión. Ya puedes revisar el catálogo completo en la página web.',
+            imagen: joyeria2,
+        },
+        {
+            idPublicacion:3,
+            usuario: 'hazy_joyeria',
+            fecha: '2026-03-15',
+            titulo: 'Relojes y brazaletes italianos',
+            descripcion: 'Descubre nuestra selección de relojes y brazaletes italianos, perfectos para personalizar con charms.',
+            imagen: joyeria3,
         }
     ]
 }
@@ -124,8 +144,20 @@ h3 {
 }
 .publicaciones {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: 20px;
+}
+
+@media (max-width: 768px) {
+    .publicaciones {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 520px) {
+    .publicaciones {
+        grid-template-columns: 1fr;
+    }
 }
 
 .publicacion {
