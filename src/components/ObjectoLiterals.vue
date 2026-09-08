@@ -6,13 +6,16 @@
     import joyeria1 from '../assets/imagenes/joyeria1.png'
     import joyeria2 from '../assets/imagenes/joyeria2.png'
     import joyeria3 from '../assets/imagenes/joyeria3.png'
-    import outfit1 from '../assets/imagenes/outfit1.jpeg'
-    import outfit2 from '../assets/imagenes/outfit2.jpeg'
     import outfit3 from '../assets/imagenes/outfit3.jpeg'
     import hazy from '../assets/imagenes/hazy.png'
     import perfil1 from '../assets/imagenes/perfil1.jpeg'
     import perfil2 from '../assets/imagenes/perfil2.jpeg'
     import perfil3 from '../assets/imagenes/perfil3.jpeg'
+    import perfil4 from '../assets/imagenes/perfil4.jpeg'
+    import recom1 from '../assets/imagenes/recom1.jpeg'
+    import recom2 from '../assets/imagenes/recom2.jpeg'
+    import cat from '../assets/imagenes/cat.jpeg'
+    import buuya from '../assets/imagenes/buuya.jpeg'
 
     const contenidoE={
         idSeccion: 'guardado',
@@ -102,6 +105,7 @@ const contenidoO={
     publicaciones:[
         {
             idPublicacion: 1,
+            perfil:cat,
             usuario: 'outfitlover',
             titulo: 'Outfit casual para el día a día',
             descripcion: 'Un look cómodo y estilizado para tus actividades diarias.',
@@ -110,18 +114,20 @@ const contenidoO={
         },
         {
             idPublicacion: 2,
-            usuario: 'fashionista',
-            titulo: 'Estilo urbano y moderno',
+            perfil:buuya,
+            usuario: 'buuya',
+            titulo: 'Jewlery ✨🤍',
             descripcion: 'Combina prendas urbanas con accesorios modernos para un look único.',
-            imagen: outfit2,
+            imagen: recom1,
         },
         {
         
             idPublicacion: 3,
-            usuario: 'streetstylequeen',
-            titulo: 'Outfit para un día soleado',
-            descripcion: 'Perfecto para disfrutar del sol con estilo y comodidad.',
-            imagen: outfit1,
+            perfil:perfil4,
+            usuario:'ella',
+            titulo: 'Fotos para Instagram',
+            descripcion: 'Es hora de tener fotos bonitas, recuerda mi frase INSTAGRAM NO ES TU CATÁLOGO.',
+            imagen: recom2,
         }
     ]
 }
@@ -176,6 +182,9 @@ function obtenerPublicacionesO() {
         <p>{{ contenidoO.descripcion }}</p>
         <div class="publicaciones">
             <div class="publicacion" v-for="pub in obtenerPublicacionesO()" :key="pub.idPublicacion">
+                <div class="perfilF">
+                    <img :src="pub.perfil" :alt="pub.usuario">
+                </div>
                 <h2>{{ pub.usuario }}</h2>
                 <h3>{{ pub.titulo }}</h3>
                 <div class="imagen">
