@@ -10,7 +10,7 @@ const setMenuActivo = (menu: string) => {
 <template>
 <header>
     <nav>
-        <h1>Catálogo</h1>
+        <h1>Mi perfil</h1>
         <ul>
             <li :class="{activo: menuActivo === 'inicio'}">
                 <a href="#inicio" class="nav-link" @click="setMenuActivo('inicio')">
@@ -57,7 +57,8 @@ const setMenuActivo = (menu: string) => {
                     <h3>Recomendado</h3>
                 </div>
             </a></li>
-            <li><a href="#seguidos" class="nav-link">
+            <li :class="{activo: menuActivo === 'seguidos'}">
+                <a href="#seguidos" class="nav-link" @click="setMenuActivo('seguidos')">
                 <svg width="800px" height="800px" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg" fill="#000000" class="bi bi-people-fill">
                 <path d="M7 14s-1 0-1-1 1-4 5-4 5 3 5 4-1 1-1 1H7zm4-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
                 <path fill-rule="evenodd" d="M5.216 14A2.238 2.238 0 0 1 5 13c0-1.355.68-2.75 1.936-3.72A6.325 6.325 0 0 0 5 9c-4 0-5 3-5 4s1 1 1 1h4.216z"/>
