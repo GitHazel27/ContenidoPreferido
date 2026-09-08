@@ -75,6 +75,12 @@ import hazy from '../src/assets/imagenes/hazy.png';
   padding: 24px;
 }
 
+section {
+    border-bottom: 1px solid #dbdbdb;
+    margin-bottom: 32px;
+    padding-bottom: 24px;
+}
+
 .inicio {
   min-height: calc(100vh - 48px);
   max-width: 1100px;
