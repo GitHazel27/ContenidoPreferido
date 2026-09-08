@@ -17,6 +17,8 @@
     import cat from '../assets/imagenes/cat.jpeg'
     import buuya from '../assets/imagenes/buuya.jpeg'
 
+    const comentarioAbierto = ref<number | null>(null);
+
     const contenidoE={
         idSeccion: 'guardado',
         nombreSeccion: 'Guardado',
@@ -68,7 +70,7 @@ const contenidoJ={
             descripcion: '✨ Descubre nuestra nueva colección de piezas doradas: flores oversize, motivos celestiales y acabados prémium resistentes al uso diario.',
             imagen: joyeria1,
             estrellas: 5,
-            comentario:'',
+            comentario:'jaz07: Preciosos, me encantaron',
             
         },
         {
@@ -79,7 +81,7 @@ const contenidoJ={
             descripcion: '¡Llegaron nuevos aretes! Diseños minimalistas y elegantes para cualquier ocasión. Ya puedes revisar el catálogo completo en la página web.',
             imagen: joyeria2,
             estrellas: 4,
-            comentario:'',
+            comentario:'vxid: La calidad increíble',
         },
         {
             idPublicacion:3,
@@ -89,7 +91,7 @@ const contenidoJ={
             descripcion: 'Descubre nuestra selección de relojes y brazaletes italianos, perfectos para personalizar con charms.Revisa el catálogo.',
             imagen: joyeria3,
             estrellas: 5,
-            comentario:'',
+            comentario:'bluish: Yo quiero unooos',
         }
     ]
 }
@@ -156,6 +158,12 @@ function obtenerPublicacionesO() {
                 <div class="estrellas" :aria-label="`${pub.estrellas} estrellas`">
                     <span v-for="estrella in pub.estrellas" :key="estrella">⭐</span>
                 </div>
+                <button class="botonC" @click="comentarioAbierto = comentarioAbierto === pub.idPublicacion ? null : pub.idPublicacion">
+                    {{ comentarioAbierto === pub.idPublicacion ? 'Ver menos ⮝' : 'Ver Comentario ⮟' }}
+                </button>
+                <div v-show="comentarioAbierto === pub.idPublicacion" class="comentario">
+                    <h5>{{ pub.comentario }}</h5>
+                </div>
             </div>
         </div>
     </section>
@@ -210,6 +218,11 @@ h2 {
     color: #171717;
     margin-bottom: 10px;
     margin-top: 0%;
+}
+
+h5{
+   font-family: instagram-font, sans-serif;
+    color: #171717; 
 }
 
 small {
@@ -293,5 +306,28 @@ h3 {
 
 .estrellas {
     margin-top: 15px;
+}
+
+.botonC {
+    align-self: center;
+    margin-top: 16px;
+    padding: 0;
+    border: 0;
+    background: transparent;
+    color: #b43b70;
+    cursor: pointer;
+    font-family: instagram-font, sans-serif;
+    font-weight: 600;
+    transition: color 0.2s ease, transform 0.2s ease;
+}
+
+.botonC:hover {
+    color: #d86b98;
+    transform: translateY(-1px);
+}
+
+
+.botonC:active {
+    transform: translateY(0);
 }
 </style>
