@@ -10,7 +10,9 @@ const setMenuActivo = (menu: string) => {
 <template>
 <header>
     <nav>
-        <h1>Mi perfil</h1>
+        <a href="#inicio">
+            <h1>Mi perfil</h1>
+        </a>
         <ul>
             <li :class="{activo: menuActivo === 'inicio'}">
                 <a href="#inicio" class="nav-link" @click="setMenuActivo('inicio')">
