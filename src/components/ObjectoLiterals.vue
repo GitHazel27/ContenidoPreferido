@@ -9,23 +9,29 @@
     import outfit1 from '../assets/imagenes/outfit1.jpeg'
     import outfit2 from '../assets/imagenes/outfit2.jpeg'
     import outfit3 from '../assets/imagenes/outfit3.jpeg'
+    import hazy from '../assets/imagenes/hazy.png'
+    import perfil1 from '../assets/imagenes/perfil1.jpeg'
+    import perfil2 from '../assets/imagenes/perfil2.jpeg'
+    import perfil3 from '../assets/imagenes/perfil3.jpeg'
+
     const contenidoE={
-        idSeccion: 'emprendimiento',
-        nombreSeccion: 'Emprendimiento',
+        idSeccion: 'guardado',
+        nombreSeccion: 'Guardado',
+        descripcion:'Publiaciones que guardaste recientemente',
         publicaciones:[
             {
                 idPublicacion: 1,
+                perfil: perfil1,
                 usuario: 'herprojectmx',
-                fecha: '2026-08-27',
                 titulo: 'Cómo usar ChatGPT para tu negocio',
-                descripcion: 'Emprender también es aprender a usar herramientas que te faciliten el camino.',
+                descripcion: 'Emprender también es aprender a usar herramientas que te faciliten el camino. ¿Qué consejo seguirías?',
                 imagen: emprendimiento1,
                 
             },
             {
                 idPublicacion: 2,
+                perfil: perfil2,
                 usuario: 'glowyourbiz.mx',
-                fecha: '2026-09-04',
                 titulo: '20 ganchos para vender más',
                 descripcion: '¡Ya está aqui tu masterclass de la semana! Si no creces y vendes con tu contenido es porque no estás utilizando estos pasos.',
                 imagen: emprendimiento2,
@@ -33,8 +39,8 @@
             {
             
                 idPublicacion: 3,
+                perfil: perfil3,
                 usuario: 'diariodeunacreadora',
-                fecha: '2026-03-23',
                 titulo: '¿No tienes ideas para tu contenido?',
                 descripcion: 'Si cada vez que entras a Tiktok piensas "¿y ahora qué publico?", este carrusel es para ti.',
                 imagen: emprendimiento3,
@@ -47,33 +53,40 @@
 }
 
 const contenidoJ={
-    idSeccion: 'joyeria',
-    nombreSeccion: 'Joyeria',
+    idSeccion: 'posts',
+    nombreSeccion: 'Mis Posts',
+    descripcion:'Tus publicaciones con más vistas',
     publicaciones:[
         {
             idPublicacion: 1,
+            perfil: hazy,
             usuario: 'hazy_joyeria',
-            fecha: '2025-08-27',
             titulo: 'Nuevos diseños de anillos dorados',
             descripcion: '✨ Descubre nuestra nueva colección de piezas doradas: flores oversize, motivos celestiales y acabados prémium resistentes al uso diario.',
             imagen: joyeria1,
+            estrellas: 5,
+            comentario:'',
             
         },
         {
             idPublicacion: 2,
+            perfil: hazy,
             usuario: 'hazy_joyeria',
-            fecha: '2026-02-01',
             titulo: 'Nuevos aretes ✨',
             descripcion: '¡Llegaron nuevos aretes! Diseños minimalistas y elegantes para cualquier ocasión. Ya puedes revisar el catálogo completo en la página web.',
             imagen: joyeria2,
+            estrellas: 4,
+            comentario:'',
         },
         {
             idPublicacion:3,
+            perfil: hazy,
             usuario: 'hazy_joyeria',
-            fecha: '2026-03-15',
             titulo: 'Relojes y brazaletes italianos',
-            descripcion: 'Descubre nuestra selección de relojes y brazaletes italianos, perfectos para personalizar con charms.',
+            descripcion: 'Descubre nuestra selección de relojes y brazaletes italianos, perfectos para personalizar con charms.Revisa el catálogo.',
             imagen: joyeria3,
+            estrellas: 5,
+            comentario:'',
         }
     ]
 }
@@ -83,13 +96,13 @@ function obtenerPublicacionesJ() {
 }
 
 const contenidoO={
-    idSeccion: 'outfits',
-    nombreSeccion: 'Outfits',
+    idSeccion: 'recomendado',
+    nombreSeccion: 'Recomendado',
+    descripcion:'Publicaciones que podrían gustarte',
     publicaciones:[
         {
             idPublicacion: 1,
             usuario: 'outfitlover',
-            fecha: '2026-08-27',
             titulo: 'Outfit casual para el día a día',
             descripcion: 'Un look cómodo y estilizado para tus actividades diarias.',
             imagen: outfit3,
@@ -98,7 +111,6 @@ const contenidoO={
         {
             idPublicacion: 2,
             usuario: 'fashionista',
-            fecha: '2026-06-15',
             titulo: 'Estilo urbano y moderno',
             descripcion: 'Combina prendas urbanas con accesorios modernos para un look único.',
             imagen: outfit2,
@@ -107,7 +119,6 @@ const contenidoO={
         
             idPublicacion: 3,
             usuario: 'streetstylequeen',
-            fecha: '2026-07-10',
             titulo: 'Outfit para un día soleado',
             descripcion: 'Perfecto para disfrutar del sol con estilo y comodidad.',
             imagen: outfit1,
@@ -122,39 +133,54 @@ function obtenerPublicacionesO() {
 
 <template>
 <div>
-    <section id="emprendimiento">
+    <section id="posts">
+        <h2>{{ contenidoJ.nombreSeccion }}</h2>
+        <p>{{ contenidoJ.descripcion }}</p>
+        <div class="publicaciones">
+            <div class="publicacion" v-for="pub in obtenerPublicacionesJ()" :key="pub.idPublicacion">
+                <div class="perfilF">
+                    <img :src="pub.perfil" :alt="pub.usuario">
+                </div>
+                <h2>{{ pub.usuario }}</h2>
+                <h3>{{ pub.titulo }}</h3>
+                <div class="imagen">
+                    <img :src="pub.imagen" :alt="pub.titulo">
+                </div>
+                <p>{{ pub.descripcion }}</p>
+                <div class="estrellas" :aria-label="`${pub.estrellas} estrellas`">
+                    <span v-for="estrella in pub.estrellas" :key="estrella">⭐</span>
+                </div>
+            </div>
+        </div>
+    </section>
+        <section id="guardado">
     <h2>{{ contenidoE.nombreSeccion }}</h2>
+    <p>{{ contenidoE.descripcion }}</p>
     <div class="publicaciones">
         <div class="publicacion" v-for="pub in obtenerPublicaciones()" :key="pub.idPublicacion">
+            <div class="perfilF">
+                    <img :src="pub.perfil" :alt="pub.usuario">
+                </div>
             <h2>{{ pub.usuario }}</h2>
-            <small>{{ pub.fecha }}</small>
             <h3>{{ pub.titulo }}</h3>
-            <img :src="pub.imagen" :alt="pub.titulo">
+            <div class="imagen">
+                    <img :src="pub.imagen" :alt="pub.titulo">
+            </div>
             <p>{{ pub.descripcion }}</p>
             
         </div>
     </div>
     </section>
-    <section id="joyeria">
-        <h2>{{ contenidoJ.nombreSeccion }}</h2>
-        <div class="publicaciones">
-            <div class="publicacion" v-for="pub in obtenerPublicacionesJ()" :key="pub.idPublicacion">
-                <h2>{{ pub.usuario }}</h2>
-                <small>{{ pub.fecha }}</small>
-                <h3>{{ pub.titulo }}</h3>
-                <img :src="pub.imagen" :alt="pub.titulo">
-                <p>{{ pub.descripcion }}</p>
-            </div>
-        </div>
-    </section>
-    <section id="outfits">
+    <section id="recomendado">
         <h2>{{ contenidoO.nombreSeccion }}</h2>
+        <p>{{ contenidoO.descripcion }}</p>
         <div class="publicaciones">
             <div class="publicacion" v-for="pub in obtenerPublicacionesO()" :key="pub.idPublicacion">
                 <h2>{{ pub.usuario }}</h2>
-                <small>{{ pub.fecha }}</small>
                 <h3>{{ pub.titulo }}</h3>
-                <img :src="pub.imagen" :alt="pub.titulo">
+                <div class="imagen">
+                    <img :src="pub.imagen" :alt="pub.titulo">
+                </div>
                 <p>{{ pub.descripcion }}</p>
             </div>
         </div>
@@ -173,7 +199,8 @@ section + section {
 h2 {
     font-family: instagram-font, sans-serif;
     color: #171717;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
+    margin-top: 0%;
 }
 
 small {
@@ -198,6 +225,8 @@ h3 {
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: 20px;
+    align-items: center;
+    text-align: center;
 }
 
 @media (max-width: 768px) {
@@ -217,15 +246,43 @@ h3 {
     border-radius: 12px;
     padding: 12px;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    height: auto;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
 }
 
-.publicacion img {
+.imagen img {
     width: 65%;
     margin: 0 auto;
     aspect-ratio: 3.5 / 4;
-    height: auto;
+    height: 280px;
+    flex-shrink: 0;
     object-fit: cover;
     border-radius: 8px;
     display: block;
+}
+
+.perfilF img{
+    border-radius: 50%;
+    width: 60px;
+    height: auto;
+    margin-top: 10px;
+    margin-bottom: 0%;
+}
+
+.publicacion p {
+    width: 85%;
+    margin: 15px auto 0px;
+    overflow: hidden;
+    display: -webkit-box;
+    line-clamp: 4;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 4;
+    
+}
+
+.estrellas {
+    margin-top: 15px;
 }
 </style>
