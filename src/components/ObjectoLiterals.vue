@@ -16,6 +16,8 @@
     import recom2 from '../assets/imagenes/recom2.jpeg'
     import cat from '../assets/imagenes/cat.jpeg'
     import buuya from '../assets/imagenes/buuya.jpeg'
+    import valen from '../assets/imagenes/valen.jpeg'
+    import arena from '../assets/imagenes/arena.jpeg'
 
     const comentarioAbierto = ref<number | null>(null);
 
@@ -137,6 +139,29 @@ const contenidoO={
 function obtenerPublicacionesO() {
   return contenidoO.publicaciones
 }
+
+const seguidos={
+    idSeccion:'seguidos',
+    nombreSeccion:'Seguidos',
+    descripcion:'Usuarios que sigues',
+    usuarios:[{
+        idUsuario:1,
+        perfil:valen,
+        usuario:'Valen bonita',
+        enlace:'https://www.tiktok.com/@valen_reyesss?_r=1&_t=ZS-99ZCtqRXJ3d',
+    },
+    {
+        idUsuario:2,
+        perfil:arena,
+        usuario:'Arena Roja',
+        enlace:'https://www.tiktok.com/@arenaroja?_r=1&_t=ZS-99ZEcQyIJt6',
+    }
+]
+}
+
+function obtenerSeguidos(){
+    return seguidos.usuarios
+}
 </script>
 
 <template>
@@ -199,6 +224,21 @@ function obtenerPublicacionesO() {
                     <img :src="pub.imagen" :alt="pub.titulo">
                 </div>
                 <p>{{ pub.descripcion }}</p>
+            </div>
+        </div>
+    </section>
+        <section id="seguidos">
+        <h2>{{ seguidos.nombreSeccion}}</h2>
+        <p>{{ seguidos.descripcion}}</p>
+        <div class="seguidos">
+            <div class="usuario" v-for=" usuario in obtenerSeguidos()" :key="usuario.idUsuario">
+                <a :href="usuario.enlace" target="_blank" rel="noopener noreferrer">
+                    <div class="perfilU">
+                        <img :src="usuario.perfil" :alt="usuario.usuario">
+                    </div>
+                    <h2>{{ usuario.usuario }}</h2>
+                </a>
+
             </div>
         </div>
     </section>
@@ -291,6 +331,34 @@ h3 {
     height: auto;
     margin-top: 10px;
     margin-bottom: 0%;
+}
+
+.perfilU img{
+    border-radius: 50%;
+    width: 100px;
+    height: auto;
+    display: block;
+    margin-top: 10%;
+}
+
+.usuario {
+    display: flex;
+    align-items: center;
+}
+
+.usuario a{
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    text-decoration: none;
+}
+
+.usuario a:hover h2{
+    color: #fc9eb4;
+}
+
+.usuario a h2 {
+    margin: 0;
 }
 
 .publicacion p {
